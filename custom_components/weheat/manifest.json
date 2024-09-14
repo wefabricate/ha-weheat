@@ -1,6 +1,6 @@
 {
   "domain": "weheat",
-  "name": "Weheat (acceptance)",
+  "name": "Weheat",
   "codeowners": ["@jesperraemaekers"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
