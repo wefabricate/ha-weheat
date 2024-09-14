@@ -1,0 +1,54 @@
+#sourced from https://github.com/bimmerconnected/ha_custom_component
+# This is a basic workflow to help you get started with Actions
+
+name: Refresh from Home Assistant
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Clone Home Assistant & get latest tag
+        run: |
+          git clone https://github.com/home-assistant/core.git ${{ runner.temp }}/core
+          cd ${{ runner.temp }}/core
+          echo "HA_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+
+# weheat package was not released yet
+#      - name: Checkout latest HA release tag
+#        run: |
+#          cd ${{ runner.temp }}/core
+#          git checkout tags/${{ env.HA_VERSION }}
+
+      - name: Copy component from HA into workspace
+        run: |
+          rsync -av --delete \
+            ${{ runner.temp }}/core/homeassistant/components/weheat/ \
+            ${{ github.workspace }}/custom_components/weheat
+
+      - name: Update version number
+        run: |
+          cd ${{ github.workspace }}/custom_components/weheat
+          sed -i "$(($(wc -l < manifest.json) - 1))i\\  \"version\": \"${{ env.HA_VERSION }}\",\\" manifest.json
+
+      - name: Create PR with new changes
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update to Home Assistant ${{ env.HA_VERSION }}
+          branch: core/${{ env.HA_VERSION }}
+          delete-branch: true
+          title: Update to Home Assistant ${{ env.HA_VERSION }}
+
