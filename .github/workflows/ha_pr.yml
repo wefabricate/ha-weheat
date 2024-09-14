@@ -44,6 +44,10 @@ jobs:
           cd ${{ github.workspace }}/custom_components/weheat/
           sed -i "$(($(wc -l < manifest.json) - 1))i\\  \"version\": \"${{ env.HA_VERSION }}\",\\" manifest.json
 
+      - name: Apply patches
+        run: |
+          git apply --ignore-space-change --ignore-whitespace ${{ github.workspace }}/patches/*.patch
+
       - name: Create PR with new changes
         uses: peter-evans/create-pull-request@v3
         with:
