@@ -37,11 +37,11 @@ jobs:
         run: |
           rsync -av --delete \
             ${{ runner.temp }}/core/homeassistant/components/weheat/ \
-            ${{ github.workspace }}/custom_components/weheat
+            ${{ github.workspace }}/custom_components/weheat/
 
       - name: Update version number
         run: |
-          cd ${{ github.workspace }}/custom_components/weheat
+          cd ${{ github.workspace }}/custom_components/weheat/
           sed -i "$(($(wc -l < manifest.json) - 1))i\\  \"version\": \"${{ env.HA_VERSION }}\",\\" manifest.json
 
       - name: Create PR with new changes
