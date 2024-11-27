@@ -70,6 +70,15 @@
             "power_output": {
                 "name": "Output power"
             },
+            "thermostat_room_temperature": {
+                "name": "Current room temperature"
+            },
+            "thermostat_room_temperature_setpoint": {
+                "name": "Room temperature setpoint"
+            },
+            "thermostat_water_setpoint": {
+                "name": "Water target temperature"
+            },
             "water_inlet_temperature": {
                 "name": "Water inlet temperature"
             },
