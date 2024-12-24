@@ -32,9 +32,32 @@
         }
     },
     "entity": {
+        "binary_sensor": {
+            "indoor_unit_auxiliary_pump_state": {
+                "name": "Indoor unit auxilary water pump"
+            },
+            "indoor_unit_dhw_valve_or_pump_state": {
+                "name": "Indoor unit DHW valve or water pump"
+            },
+            "indoor_unit_electric_heater_state": {
+                "name": "Indoor unit electric heater"
+            },
+            "indoor_unit_gas_boiler_state": {
+                "name": "Indoor unit gas boiler heating allowed"
+            },
+            "indoor_unit_water_pump_state": {
+                "name": "Indoor unit water pump"
+            }
+        },
         "sensor": {
             "ch_inlet_temperature": {
                 "name": "Central heating inlet temperature"
+            },
+            "compressor_percentage": {
+                "name": "Compressor usage"
+            },
+            "compressor_rpm": {
+                "name": "Compressor speed"
             },
             "cop": {
                 "name": "COP"
@@ -47,6 +70,9 @@
             },
             "electricity_used": {
                 "name": "Electricity used"
+            },
+            "energy_output": {
+                "name": "Total energy output"
             },
             "heat_pump_state": {
                 "state": {
