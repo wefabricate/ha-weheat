@@ -16,14 +16,14 @@ index fa1b17f..0c1ec01 100644
  
  OAUTH2_AUTHORIZE = (
 -    "https://auth.weheat.nl/auth/realms/Weheat/protocol/openid-connect/auth/"
-+    "https://auth.early.weheat.nl/auth/realms/Weheat/protocol/openid-connect/auth/"
++    "https://auth.acc.weheat.nl/auth/realms/Weheat/protocol/openid-connect/auth/"
  )
  OAUTH2_TOKEN = (
 -    "https://auth.weheat.nl/auth/realms/Weheat/protocol/openid-connect/token/"
-+    "https://auth.early.weheat.nl/auth/realms/Weheat/protocol/openid-connect/token/"
++    "https://auth.acc.weheat.nl/auth/realms/Weheat/protocol/openid-connect/token/"
  )
 -API_URL = "https://api.weheat.nl"
-+API_URL = "https://api.early.weheat.nl"
++API_URL = "https://api.acc.weheat.nl"
  OAUTH2_SCOPES = ["openid", "offline_access"]
  
  

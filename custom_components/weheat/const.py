@@ -8,12 +8,12 @@ ENTRY_TITLE = "Weheat cloud"
 ERROR_DESCRIPTION = "error_description"
 
 OAUTH2_AUTHORIZE = (
-    "https://auth.early.weheat.nl/auth/realms/Weheat/protocol/openid-connect/auth/"
+    "https://auth.acc.weheat.nl/auth/realms/Weheat/protocol/openid-connect/auth/"
 )
 OAUTH2_TOKEN = (
-    "https://auth.early.weheat.nl/auth/realms/Weheat/protocol/openid-connect/token/"
+    "https://auth.acc.weheat.nl/auth/realms/Weheat/protocol/openid-connect/token/"
 )
-API_URL = "https://api.early.weheat.nl"
+API_URL = "https://api.acc.weheat.nl"
 OAUTH2_SCOPES = ["openid", "offline_access"]
 
 
