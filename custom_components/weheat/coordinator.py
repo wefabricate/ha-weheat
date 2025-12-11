@@ -22,7 +22,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.config_entry_oauth2_flow import OAuth2Session
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import API_URL, DOMAIN, ENERGY_UPDATE_INTERVAL, LOG_UPDATE_INTERVAL, LOGGER
+from .const import API_URL_WH, DOMAIN, ENERGY_UPDATE_INTERVAL, LOG_UPDATE_INTERVAL, LOGGER
 
 type WeheatConfigEntry = ConfigEntry[list[WeheatData]]
 
@@ -92,7 +92,7 @@ class WeheatDataUpdateCoordinator(DataUpdateCoordinator[HeatPump]):
             update_interval=timedelta(seconds=LOG_UPDATE_INTERVAL * nr_of_heat_pumps),
         )
         self._heat_pump_data = HeatPump(
-            API_URL, heat_pump.uuid, async_get_clientsession(hass)
+            API_URL_WH, heat_pump.uuid, async_get_clientsession(hass)
         )
 
         self.session = session
@@ -134,7 +134,7 @@ class WeheatEnergyUpdateCoordinator(DataUpdateCoordinator[HeatPump]):
             update_interval=timedelta(seconds=ENERGY_UPDATE_INTERVAL),
         )
         self._heat_pump_data = HeatPump(
-            API_URL, heat_pump.uuid, async_get_clientsession(hass)
+            API_URL_WH, heat_pump.uuid, async_get_clientsession(hass)
         )
 
         self.session = session

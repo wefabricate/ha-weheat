@@ -19,7 +19,7 @@ from homeassistant.helpers.config_entry_oauth2_flow import (
     async_get_config_entry_implementation,
 )
 
-from .const import API_URL, DOMAIN, LOGGER
+from .const import API_URL_WH, DOMAIN, LOGGER
 from .coordinator import (
     HeatPumpInfo,
     WeheatConfigEntry,
@@ -61,7 +61,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: WeheatConfigEntry) -> bo
     # fetch a list of the heat pumps the entry can access
     try:
         discovered_heat_pumps = await HeatPumpDiscovery.async_discover_active(
-            API_URL, token, async_get_clientsession(hass)
+            API_URL_WH, token, async_get_clientsession(hass)
         )
     except UnauthorizedException as error:
         raise ConfigEntryAuthFailed from error
