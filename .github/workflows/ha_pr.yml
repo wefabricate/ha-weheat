@@ -27,11 +27,10 @@ jobs:
           cd ${{ runner.temp }}/core
           echo "HA_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
 
-# weheat package was not released yet
-#      - name: Checkout latest HA release tag
-#        run: |
-#          cd ${{ runner.temp }}/core
-#          git checkout tags/${{ env.HA_VERSION }}
+      - name: Checkout latest HA release tag
+        run: |
+          cd ${{ runner.temp }}/core
+          git checkout tags/${{ env.HA_VERSION }}
 
       - name: Copy component from HA into workspace
         run: |
